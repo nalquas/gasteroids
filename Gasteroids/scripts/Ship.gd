@@ -25,3 +25,7 @@ func _process(delta):
 			playAnimation("boost")
 		else:
 			playAnimation("default")
+		
+		#Firing
+		if Input.is_action_pressed("ship_shoot"):
+			pass
