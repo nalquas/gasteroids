@@ -41,13 +41,16 @@ func setSize(newSize):
 	$CollisionShape2D.scale=Vector2(scaleFactor,scaleFactor)
 	$CollisionArea/AreaShape.scale=Vector2(scaleFactor,scaleFactor)
 
+func destroySelf():
+	if asteroidSize>1:
+		emit_signal("split", self)
+	emit_signal("destroyed")
+	queue_free() #Destroy self
 
 func _on_CollisionArea_body_entered(body):
 	if body.get_name()=="Ship":
 		emit_signal("hit_ship", self)
+		destroySelf()
 	elif "Shot" in body.get_name():
 		body.kill() #Destroy shot
-		if asteroidSize>1:
-			emit_signal("split", self)
-		emit_signal("destroyed")
-		queue_free() #Destroy self
+		destroySelf()

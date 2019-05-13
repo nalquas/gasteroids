@@ -1,5 +1,7 @@
 extends Node
 
+signal score_changed
+
 export (PackedScene) var scene_asteroid
 export (PackedScene) var scene_shot
 
@@ -53,8 +55,12 @@ func _on_Ship_shoot():
 	newShot.position=$Ship.position
 	newShot.setDirection(180-$Ship.rotation_degrees)
 
+func _on_Asteroid_hit_ship(asteroid):
+	pass
+
 func _on_Asteroid_split(asteroid):
 	spawnAsteroidsControlled(2,asteroid.position,asteroid.asteroidSize-1,true)
 
 func _on_Asteroid_destroyed():
 	score+=1
+	emit_signal("score_changed", score)
