@@ -12,7 +12,8 @@ var waitingForRespawn = false
 var t_respawn = 0
 
 func _ready():
-	$Game_GUI/Score.text = "Score: 0"
+	$Game_GUI.setScore(score)
+	$Game_GUI.setRespawns(respawns)
 	spawnAsteroids(5+level*2)
 
 #warning-ignore:unused_argument
@@ -68,6 +69,7 @@ func _on_Asteroid_hit_ship():
 		$Ship.setActive(false)
 		if respawns>=0:
 			respawns-=1
+			$Game_GUI.setRespawns(respawns)
 			waitingForRespawn = true
 			t_respawn = OS.get_system_time_msecs()
 		else:
@@ -78,4 +80,4 @@ func _on_Asteroid_split(asteroid):
 
 func _on_Asteroid_destroyed():
 	score+=1
-	$Game_GUI/Score.text = "Score: " + String(score)
+	$Game_GUI.setScore(score)
