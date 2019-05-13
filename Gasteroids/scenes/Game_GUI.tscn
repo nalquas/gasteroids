@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Game_GUI.gd" type="Script" id=1]
 [ext_resource path="res://fonts/hack.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/ship.png" type="Texture" id=3]
+[ext_resource path="res://fonts/hack_large.tres" type="DynamicFont" id=4]
 
 [node name="Game_GUI" type="Control"]
 anchor_right = 1.0
@@ -32,4 +33,19 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 2
+
+[node name="GameOver" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -261.0
+margin_top = -56.5
+margin_right = 261.0
+margin_bottom = 56.5
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "Game Over"
+align = 1
+valign = 1
 

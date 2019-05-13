@@ -14,6 +14,7 @@ var t_respawn = 0
 func _ready():
 	$Game_GUI.setScore(score)
 	$Game_GUI.setRespawns(respawns)
+	$Game_GUI.setGameOver(false)
 	spawnAsteroids(5+level*2)
 
 #warning-ignore:unused_argument

@@ -3,6 +3,9 @@ extends Control
 func _ready():
 	pass
 
+func setGameOver(gameover):
+	$GameOver.visible = gameover
+
 func setScore(score):
 	$Score.text = "Score: "+String(score)
 
