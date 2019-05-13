@@ -1,10 +1,10 @@
 extends "FlyingObject.gd"
 
+signal shoot
+
 export (int) var rotation_factor
 export (float) var thrust_factor
-export (PackedScene) var scene_shot
 
-#TODO
 var t_shot = 0
 
 func _ready():
@@ -32,4 +32,5 @@ func _process(delta):
 		
 		#Firing
 		if Input.is_action_pressed("ship_shoot") and OS.get_system_time_msecs()-t_shot>333:
-			pass
+			emit_signal("shoot")
+			t_shot=OS.get_system_time_msecs()

@@ -12,6 +12,10 @@ func _physics_process(delta):
 		position.x+=speed.x*delta
 		position.y-=speed.y*delta
 		rotation_degrees+=speedRotation*delta
+		if rotation_degrees>=360:
+			rotation_degrees-=360
+		elif rotation_degrees<0:
+			rotation_degrees+=360
 		
 		#Drag
 		if drag:
