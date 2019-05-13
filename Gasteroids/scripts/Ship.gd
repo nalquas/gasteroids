@@ -13,7 +13,7 @@ func _ready():
 	#Changes to FlyingObject variables specific to Ship
 	objectSize=Vector2(44,44)
 	drag = true
-	running = true
+	setActive(true)
 
 func _process(delta):
 	if running:
@@ -34,3 +34,8 @@ func _process(delta):
 		if Input.is_action_pressed("ship_shoot") and OS.get_system_time_msecs()-t_shot>333:
 			emit_signal("shoot")
 			t_shot=OS.get_system_time_msecs()
+
+func setActive(active):
+	running = active
+	$AnimatedSprite.visible = active #TODO instead of disabling, play a death animation
+	$CollisionShape2D.call_deferred("set_disabled", !active)

@@ -8,6 +8,8 @@ var score = 0
 var respawns = 2
 var waitingForNextLevel = false
 var t_nextLevel = 0
+var waitingForRespawn = false
+var t_respawn = 0
 
 func _ready():
 	$Game_GUI/Score.text = "Score: 0"
@@ -15,6 +17,11 @@ func _ready():
 
 #warning-ignore:unused_argument
 func _process(delta):
+	#Respawn handling
+	if waitingForRespawn:
+		pass #TODO Handle respawn
+	
+	#Levelup handling
 	if waitingForNextLevel:
 		if OS.get_system_time_msecs()-t_nextLevel>1500: #Levelup
 			waitingForNextLevel = false
@@ -55,8 +62,16 @@ func _on_Ship_shoot():
 	newShot.position=$Ship.position
 	newShot.setDirection(180-$Ship.rotation_degrees)
 
-func _on_Asteroid_hit_ship(asteroid):
-	pass
+func _on_Asteroid_hit_ship():
+	if $Ship.running:
+		score-=1
+		$Ship.setActive(false)
+		if respawns>=0:
+			respawns-=1
+			waitingForRespawn = true
+			t_respawn = OS.get_system_time_msecs()
+		else:
+			pass #TODO trigger game over
 
 func _on_Asteroid_split(asteroid):
 	spawnAsteroidsControlled(2,asteroid.position,asteroid.asteroidSize-1,true)

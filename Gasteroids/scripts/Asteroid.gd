@@ -49,7 +49,7 @@ func destroySelf():
 
 func _on_CollisionArea_body_entered(body):
 	if body.get_name()=="Ship":
-		emit_signal("hit_ship", self)
+		emit_signal("hit_ship")
 		destroySelf()
 	elif "Shot" in body.get_name():
 		body.kill() #Destroy shot
