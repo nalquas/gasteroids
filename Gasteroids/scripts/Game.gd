@@ -1,16 +1,16 @@
 extends Node
 
-signal score_changed
-
 export (PackedScene) var scene_asteroid
 export (PackedScene) var scene_shot
 
 var level = 0
 var score = 0
+var respawns = 2
 var waitingForNextLevel = false
 var t_nextLevel = 0
 
 func _ready():
+	$Game_GUI/Score.text = "Score: 0"
 	spawnAsteroids(5+level*2)
 
 #warning-ignore:unused_argument
@@ -63,4 +63,4 @@ func _on_Asteroid_split(asteroid):
 
 func _on_Asteroid_destroyed():
 	score+=1
-	emit_signal("score_changed", score)
+	$Game_GUI/Score.text = "Score: " + String(score)
