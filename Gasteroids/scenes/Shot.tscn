@@ -9,6 +9,7 @@ extents = Vector2( 2.45203, 9.25552 )
 [node name="Shot" type="KinematicBody2D"]
 script = ExtResource( 1 )
 shotSpeed = 1000
+shotTimeMsec = 1500
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
