@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Game_GUI.gd" type="Script" id=1]
 [ext_resource path="res://fonts/hack.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/ship.png" type="Texture" id=3]
 [ext_resource path="res://fonts/hack_large.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/button_arrow.png" type="Texture" id=5]
+[ext_resource path="res://assets/button_shoot.png" type="Texture" id=6]
 
 [node name="Game_GUI" type="Control"]
 anchor_right = 1.0
@@ -49,3 +51,77 @@ text = "Game Over"
 align = 1
 valign = 1
 
+[node name="Thrust" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -388.0
+margin_right = 163.0
+margin_bottom = -256.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[node name="Shoot" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -163.0
+margin_top = -388.0
+margin_right = -32.0
+margin_bottom = -256.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+
+[node name="Left" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = -100.0
+margin_right = 163.0
+margin_bottom = 32.0
+rect_rotation = 270.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[node name="Right" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -35.0
+margin_top = -228.0
+margin_right = 96.0
+margin_bottom = -96.0
+rect_rotation = 90.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[connection signal="button_down" from="Thrust" to="." method="_on_Thrust_button_down"]
+[connection signal="button_up" from="Thrust" to="." method="_on_Thrust_button_up"]
+[connection signal="button_down" from="Shoot" to="." method="_on_Shoot_button_down"]
+[connection signal="button_up" from="Shoot" to="." method="_on_Shoot_button_up"]
+[connection signal="button_down" from="Left" to="." method="_on_Left_button_down"]
+[connection signal="button_up" from="Left" to="." method="_on_Left_button_up"]
+[connection signal="button_down" from="Right" to="." method="_on_Right_button_down"]
+[connection signal="button_up" from="Right" to="." method="_on_Right_button_up"]
