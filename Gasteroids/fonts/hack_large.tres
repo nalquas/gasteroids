@@ -7,3 +7,4 @@ size = 96
 outline_size = 1
 outline_color = Color( 0, 1, 0, 0.345098 )
 font_data = ExtResource( 1 )
+

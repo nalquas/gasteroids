@@ -47,7 +47,7 @@ func _process(delta):
 	#Gameover handling
 	if waitingForGameover and OS.get_system_time_msecs()-t_gameover>3000:
 		waitingForGameover = false
-		emit_signal("gameover")
+		emit_signal("gameover", score)
 
 func nextLevel():
 	waitingForNextLevel = true

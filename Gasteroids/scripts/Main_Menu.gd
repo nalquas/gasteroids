@@ -10,6 +10,9 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	connect("fullscreen", get_parent(), "_on_Main_Menu_fullscreen")
 
+func setHighscore(highscore):
+	$Highscore.text = "Highscore: "+String(highscore)
+
 func _on_Start_pressed():
 	emit_signal("start")
 
