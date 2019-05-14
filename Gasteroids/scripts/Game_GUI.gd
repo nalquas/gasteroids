@@ -11,7 +11,7 @@ func _ready():
 	if name=="Android" or name=="iOS" or name=="UWP":
 		setTouchOverlay(true)
 	else:
-		setTouchOverlay(true)
+		setTouchOverlay(false)
 
 func setGameOver(gameover):
 	$GameOver.visible = gameover
