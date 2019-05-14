@@ -6,6 +6,9 @@ export (int) var shotTimeMsec
 var tSpawn = 0
 
 func _ready():
+	#Grouping
+	add_to_group("shots")
+	
 	#Changes to FlyingObject variables specific to Shot
 	objectSize=Vector2(24,24)
 	setDirection(35)
