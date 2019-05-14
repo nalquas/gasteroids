@@ -17,6 +17,7 @@ var t_gameover = 0
 
 func _ready():
 	#Signals
+	# warning-ignore:return_value_discarded
 	connect("gameover", get_parent(), "_on_Game_gameover")
 	
 	$Game_GUI.setScore(score)
