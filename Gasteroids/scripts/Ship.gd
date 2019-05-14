@@ -16,6 +16,7 @@ func _ready():
 	objectSize=Vector2(44,44)
 	drag = true
 	setActive(true)
+	setImmune(true)
 
 func _process(delta):
 	if running:
