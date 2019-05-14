@@ -32,9 +32,15 @@ func _process(delta):
 		#Thrusting
 		if Input.is_action_pressed("ship_thrust"):
 			speed+=Vector2(sin(rotation),cos(rotation))*thrust_factor
-			playAnimation("boost")
+			if waitingForImmuneStop:
+				playAnimation("boost_immune")
+			else:
+				playAnimation("boost")
 		else:
-			playAnimation("default")
+			if waitingForImmuneStop:
+				playAnimation("default_immune")
+			else:
+				playAnimation("default")
 		
 		#Firing
 		if Input.is_action_pressed("ship_shoot") and OS.get_system_time_msecs()-t_shot>333:
@@ -48,5 +54,6 @@ func setActive(active):
 
 func setImmune(immune):
 	$CollisionShape2D.call_deferred("set_disabled", immune)
-	t_immune = OS.get_system_time_msecs()
-	waitingForImmuneStop = true
+	waitingForImmuneStop = immune
+	if immune:
+		t_immune = OS.get_system_time_msecs()
