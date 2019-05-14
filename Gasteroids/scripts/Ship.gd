@@ -6,6 +6,8 @@ export (int) var rotation_factor
 export (float) var thrust_factor
 
 var t_shot = 0
+var waitingForImmuneStop = false
+var t_immune = 0
 
 func _ready():
 	playAnimation("default")
@@ -17,6 +19,10 @@ func _ready():
 
 func _process(delta):
 	if running:
+		#Immunity deactivation
+		if waitingForImmuneStop and OS.get_system_time_msecs()-t_immune>3000:
+			setImmune(false)
+		
 		#Rotation
 		if Input.is_action_pressed("ship_left"):
 			rotation_degrees-=delta*rotation_factor
@@ -38,4 +44,9 @@ func _process(delta):
 func setActive(active):
 	running = active
 	$AnimatedSprite.visible = active #TODO instead of disabling, play a death animation
-	$CollisionShape2D.call_deferred("set_disabled", !active)
+	setImmune(!active)
+
+func setImmune(immune):
+	$CollisionShape2D.call_deferred("set_disabled", immune)
+	t_immune = OS.get_system_time_msecs()
+	waitingForImmuneStop = true

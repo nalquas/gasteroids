@@ -20,8 +20,12 @@ func _ready():
 #warning-ignore:unused_argument
 func _process(delta):
 	#Respawn handling
-	if waitingForRespawn:
-		pass #TODO Handle respawn
+	if waitingForRespawn and OS.get_system_time_msecs()-t_respawn>3000:
+		waitingForRespawn = false
+		$Ship.position = Vector2(rand_range(0,1920),rand_range(0,1080))
+		$Ship.speed = Vector2(0,0)
+		$Ship.setActive(true)
+		$Ship.setImmune(true)
 	
 	#Levelup handling
 	if waitingForNextLevel:
@@ -53,7 +57,7 @@ func spawnAsteroidsControlled(count,positionVector,asteroidSize,forceSettings):
 				forcedRun = false
 				newAsteroid.position=Vector2(rand_range(0,1920),rand_range(0,1080))
 			newAsteroid.setSize(int(rand_range(0,4)))
-		add_child(newAsteroid)
+		call_deferred("add_child", newAsteroid)
 
 func _on_Ship_shoot():
 	#Create a new shot
