@@ -8,9 +8,11 @@ export (float) var thrust_factor
 var t_shot = 0
 var waitingForImmuneStop = false
 var t_immune = 0
+var doShrinking = false
 
 func _ready():
 	playAnimation("default")
+	$AnimatedSprite.scale=Vector2(0.33,0.33)
 	
 	#Changes to FlyingObject variables specific to Ship
 	objectSize=Vector2(44,44)
@@ -19,6 +21,13 @@ func _ready():
 	setImmune(true)
 
 func _process(delta):
+	if doShrinking:
+		#Play Shrinking animation on death
+		$AnimatedSprite.scale -= Vector2(delta,delta)/4
+		if $AnimatedSprite.scale.x<=0:
+			doShrinking = false
+			$AnimatedSprite.scale=Vector2(0,0)
+	
 	if running:
 		#Immunity deactivation
 		if waitingForImmuneStop and OS.get_system_time_msecs()-t_immune>3000:
@@ -50,7 +59,13 @@ func _process(delta):
 
 func setActive(active):
 	running = active
-	$AnimatedSprite.visible = active #TODO instead of disabling, play a death animation
+	#$AnimatedSprite.visible = active #TODO instead of disabling, play a death animation
+	if !active:
+		playAnimation("destroyed")
+		doShrinking = true
+	else:
+		doShrinking = false
+		$AnimatedSprite.scale=Vector2(0.33,0.33)
 	setImmune(!active)
 
 func setImmune(immune):

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/ship.png" type="Texture" id=2]
-[ext_resource path="res://assets/ship_boosting.png" type="Texture" id=3]
-[ext_resource path="res://assets/empty.png" type="Texture" id=4]
+[ext_resource path="res://assets/ship_halved.png" type="Texture" id=3]
+[ext_resource path="res://assets/ship_boosting.png" type="Texture" id=4]
+[ext_resource path="res://assets/empty.png" type="Texture" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,15 +15,20 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 2 ) ],
 "loop": true,
+"name": "destroyed",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
 "name": "boost",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "boost_immune",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default_immune",
 "speed": 15.0
@@ -43,9 +49,9 @@ thrust_factor = 18.0
 position = Vector2( -21.833, -21.833 )
 scale = Vector2( 0.33, 0.33 )
 frames = SubResource( 1 )
-animation = "boost_immune"
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -21.833, -21.833 )
 shape = SubResource( 2 )
+
