@@ -36,10 +36,10 @@ func _process(delta):
 		var touchRight = false
 		var touchShoot = false
 		if "Game" in get_parent().name:
-			touchThrust = get_parent().get_node("Game_GUI").pressedThrust
-			touchLeft = get_parent().get_node("Game_GUI").pressedLeft
-			touchRight = get_parent().get_node("Game_GUI").pressedRight
-			touchShoot = get_parent().get_node("Game_GUI").pressedShoot
+			touchThrust = get_parent().get_node("TouchGamepad").pressedThrust
+			touchLeft = get_parent().get_node("TouchGamepad").pressedLeft
+			touchRight = get_parent().get_node("TouchGamepad").pressedRight
+			touchShoot = get_parent().get_node("TouchGamepad").pressedShoot
 		
 		#Immunity deactivation
 		if waitingForImmuneStop and OS.get_system_time_msecs()-t_immune>3000:
