@@ -18,5 +18,4 @@ position = Vector2( 960, 540 )
 [node name="Game_GUI" parent="." instance=ExtResource( 5 )]
 
 [node name="TouchGamepad" parent="." instance=ExtResource( 6 )]
-
 [connection signal="shoot" from="Ship" to="." method="_on_Ship_shoot"]

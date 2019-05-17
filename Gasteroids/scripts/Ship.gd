@@ -5,9 +5,9 @@ signal shoot
 export (int) var rotation_factor
 export (float) var thrust_factor
 
-var t_shot = 0
+var t_shot = OS.get_system_time_msecs()
 var waitingForImmuneStop = false
-var t_immune = 0
+var t_immune = OS.get_system_time_msecs()
 var doShrinking = false
 
 func _ready():

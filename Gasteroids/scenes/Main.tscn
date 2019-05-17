@@ -9,4 +9,3 @@ script = ExtResource( 1 )
 scene_game = ExtResource( 2 )
 
 [node name="Main_Menu" parent="." instance=ExtResource( 3 )]
-

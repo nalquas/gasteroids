@@ -43,7 +43,6 @@ pressed = ExtResource( 2 )
 shape = SubResource( 1 )
 shape_visible = false
 visibility_mode = 1
-
 [connection signal="pressed" from="Thrust" to="." method="_on_Thrust_pressed"]
 [connection signal="released" from="Thrust" to="." method="_on_Thrust_released"]
 [connection signal="pressed" from="Shoot" to="." method="_on_Shoot_pressed"]

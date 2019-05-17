@@ -9,11 +9,11 @@ var level = 0
 var score = 0
 var respawns = 2
 var waitingForNextLevel = false
-var t_nextLevel = 0
+var t_nextLevel = OS.get_system_time_msecs()
 var waitingForRespawn = false
-var t_respawn = 0
+var t_respawn = OS.get_system_time_msecs()
 var waitingForGameover = false
-var t_gameover = 0
+var t_gameover = OS.get_system_time_msecs()
 
 func _ready():
 	#Signals

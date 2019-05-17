@@ -3,7 +3,7 @@ extends "FlyingObject.gd"
 export (int) var shotSpeed
 export (int) var shotTimeMsec
 
-var tSpawn = 0
+var tSpawn = OS.get_system_time_msecs()
 
 func _ready():
 	#Grouping
