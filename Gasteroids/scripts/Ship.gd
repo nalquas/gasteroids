@@ -78,6 +78,7 @@ func setActive(active):
 	running = active
 	if !active:
 		playAnimation("destroyed")
+		$DeathAudio.play()
 		doShrinking = true
 	else:
 		doShrinking = false

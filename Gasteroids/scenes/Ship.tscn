@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/ship.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/ship_halved.png" type="Texture" id=4]
 [ext_resource path="res://assets/empty.png" type="Texture" id=5]
 [ext_resource path="res://assets/thrust.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/death.ogg" type="AudioStream" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -58,4 +59,9 @@ shape = SubResource( 2 )
 
 [node name="ThrustAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -6.059
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -3.029
 
