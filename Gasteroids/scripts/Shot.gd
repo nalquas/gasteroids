@@ -14,6 +14,7 @@ func _ready():
 	setDirection(35)
 	tSpawn=OS.get_system_time_msecs()
 	running = true
+	$ShotAudio.play()
 
 #warning-ignore:unused_argument
 func _process(delta):

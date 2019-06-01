@@ -102,5 +102,6 @@ func _on_Asteroid_split(asteroid):
 	spawnAsteroidsControlled(2,asteroid.position,asteroid.asteroidSize-1,true)
 
 func _on_Asteroid_destroyed():
+	$AsteroidExplosionAudio.play()
 	score+=1
 	$Game_GUI.setScore(score)

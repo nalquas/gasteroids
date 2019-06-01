@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/thrust.ogg-a6a2062b65b88124cae4ed0d09abd65f.oggstr"
+
+[deps]
+
+source_file="res://assets/thrust.ogg"
+dest_files=[ "res://.import/thrust.ogg-a6a2062b65b88124cae4ed0d09abd65f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

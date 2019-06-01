@@ -13,6 +13,7 @@ var doShrinking = false
 func _ready():
 	playAnimation("default")
 	$AnimatedSprite.scale=Vector2(0.33,0.33)
+	$ThrustAudio.stop()
 	
 	#Changes to FlyingObject variables specific to Ship
 	objectSize=Vector2(44,44)
@@ -22,6 +23,7 @@ func _ready():
 
 func _process(delta):
 	if doShrinking:
+		$ThrustAudio.stop()
 		#Play Shrinking animation on death
 		$AnimatedSprite.scale -= Vector2(delta,delta)/4
 		if $AnimatedSprite.scale.x<=0:
@@ -53,12 +55,15 @@ func _process(delta):
 		
 		#Thrusting
 		if Input.is_action_pressed("ship_thrust") or touchThrust:
+			if not $ThrustAudio.playing:
+				$ThrustAudio.play()
 			speed+=Vector2(sin(rotation),cos(rotation))*thrust_factor
 			if waitingForImmuneStop:
 				playAnimation("boost_immune")
 			else:
 				playAnimation("boost")
 		else:
+			$ThrustAudio.stop()
 			if waitingForImmuneStop:
 				playAnimation("default_immune")
 			else:
@@ -71,9 +76,9 @@ func _process(delta):
 
 func setActive(active):
 	running = active
-	#$AnimatedSprite.visible = active #TODO instead of disabling, play a death animation
 	if !active:
 		playAnimation("destroyed")
+		$DeathAudio.play()
 		doShrinking = true
 	else:
 		doShrinking = false
