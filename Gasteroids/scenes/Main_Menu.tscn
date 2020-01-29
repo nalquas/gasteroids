@@ -94,7 +94,6 @@ custom_colors/font_color = Color( 0, 1, 0, 1 )
 text = "Highscore: 0"
 align = 1
 valign = 1
-
 [connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Fullscreen" to="." method="_on_Fullscreen_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
