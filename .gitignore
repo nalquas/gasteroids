@@ -1,0 +1,7 @@
+
+# Godot-specific ignores
+Gasteroids/.import/
+
+# Mono-specific ignores
+Gasteroids/.mono/
+Gasteroids/data_*/
